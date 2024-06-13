@@ -1,0 +1,177 @@
+#include "hsp3dish.as"
+;#include "mod_vpad_ex.as"
+#include "mod_mtouch.hsp"
+#include "mod_enemy.hsp"
+#include "mod_star.hsp"
+#include "mod_land.hsp"
+;===メインプログラム===
+winx=737;ginfo_winx
+winy=440;ginfo_winy
+screen 0,winx,winy
+;randomize
+setcls 0
+;===画像バッファ
+celload "watch-pic.png":backID=stat
+
+celload "chr.png":chrID=stat
+celdiv chrID,16,16,0,0
+
+;===サウンド
+SE_JUMP		=0:mmload "se02.wav",SE_JUMP,0:mmvol SE_JUMP,-800
+SE_BLOCK	=1:mmload "se_click.wav",SE_BLOCK,0
+SE_HIT		=2:mmload "se09.wav",SE_HIT,0
+SE_MISS		=3:mmload "se08.wav",SE_MISS,0
+SE_WALK		=4:mmload "se_foot.wav",SE_WALK,0:mmvol SE_WALK,-800
+SE_WALK2	=5:mmload "se_foot.wav",SE_WALK2,0
+
+;===変数準備
+offsetx	=215
+offsety	=102
+score	=0
+
+;===画面モード
+gsel 0:gmode	2
+
+;===バーチャルパッド
+;hspvpad_init 15					; バーチャルパッドの初期化
+;===自作バーチャルパッド
+class_init@mod_mtouch
+
+;===タイトル画面
+gosub *title_stage
+
+
+;===ステージ形成===
+class_init@mod_land
+repeat  7:newmod lands,mod_land,10+16*cnt,46+16		:loop
+repeat  7:newmod lands,mod_land,10+192+16*cnt,46+16	:loop
+repeat 11:newmod lands,mod_land,10+64+16*cnt,110+16	:loop
+repeat  2:newmod lands,mod_land,10+16*cnt,126+16	:loop
+repeat  2:newmod lands,mod_land,10+272+16*cnt,126+16:loop
+repeat  6:newmod lands,mod_land,10+16*cnt,166+16	:loop
+repeat  6:newmod lands,mod_land,10+208+16*cnt,166+16:loop
+repeat 19:newmod lands,mod_land,10+16*cnt,214+16	:loop
+
+;===プレイヤー形成===
+class_init@mod_star
+repeat 1:newmod stars,mod_star	:loop
+
+;===ENEMY形成===
+class_init@mod_enemy
+repeat 2:newmod enemys,mod_enemy:loop
+
+
+*main
+redraw 0
+color 20,20,20
+boxf
+	gmode 2
+	stick keys,1+4
+	class_mtlist@mod_mtouch keys
+	
+	if keys&128{end}
+	;hspvpad_key keys					; バーチャルパッドのキーを読み取る
+	;===UPDATE=========
+	foreach stars :update@mod_star  stars(cnt),keys	:loop
+	foreach enemys:update@mod_enemy enemys(cnt)		:loop
+	foreach lands :update@mod_land  lands(cnt)		:loop
+
+	;===メッセージ===
+	pos 0+offsetx,0+offsety
+	color 255,255,255
+	mes strf("SCORE:%8d",score),mesopt_outline
+
+	;===PAUSE===
+	if keys&64{gosub *pause}
+
+	;===背景描画===
+	pos 0,0
+	celput backID
+
+	;hspvpad_put mykey				; バーチャルパッドを表示する
+	
+	draw_all@mod_mtouch
+	
+redraw 1
+await 1000/60
+
+goto *main
+
+;--------------------------
+;PAUSE
+;--------------------------
+*pause
+	repeat
+	;gsel 0
+	redraw 0
+		
+		stick keys
+		class_mtlist@mod_mtouch keys
+		
+		if keys&64{break}
+		if keys&128{end}
+		;===背景描画===
+		pos 0,0
+		celput backID
+		
+		;===PAUSE===
+		pos offsetx+100,offsety+125
+		color 255,255,255
+		mes "- P A U S E -",mesopt_outline
+		
+	redraw 1
+	await 1000/60
+	loop
+return
+;--------------------------
+;TITLE画面
+;--------------------------
+*title_stage
+	
+	repeat
+		gsel 0
+		gmode 2
+		redraw 0
+			color 20,20,20
+			boxf
+			stick keys
+			class_mtlist@mod_mtouch keys
+			
+			if keys&16 : break
+			if keys&128 : end
+	
+			pos 36+offsetx,100+offsety
+			fprt "TAMANE J U M P"
+			pos 66+offsetx,150+offsety
+			fprt "PRESS ENTER"
+		
+			pos 0+offsetx,0+offsety
+			color 255,255,255
+			mes "タイトル画面"
+			pos 0,0
+			celput backID
+			;hspvpad_put mykey				; バーチャルパッドを表示する
+		redraw 1
+		await 16	
+	loop
+	keys=0
+return
+#deffunc fprt str _p1
+	;	fprt "message"
+	;	(画像を使用したフォント表示を行ないます)
+	;	"message" : 表示するメッセージ
+	;	表示座標は、posで指定した位置から
+	;
+	i=0:st=_p1
+
+	repeat
+	a1=peek(st,i):i++:if a1=0 : break
+	if a1=13 {
+		a1=peek(st,i)
+		if a1=10 : i++
+		continue	; 改行
+	} else {
+		celput chrID@,a1
+	}
+	loop
+	return
