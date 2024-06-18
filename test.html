@@ -1,13 +1,40 @@
-<!DOCTYPE html>
+<!-- 見えない部分 -->
 <html>
-    <head>
-        <title>Example</title>
-    </head>
-    <body>
+<head></head>
+<!-- ↓ここから見える部分↓ -->
+<body>
 
-        <?php
-            echo "Hi, I'm a PHP script!";
-        ?>
+<!-- ↓この下にJavaScriptを入力してね！↓ -->
+<script>
 
-     </body>
+// データのセーブ
+function save() {
+   let sample_data =         document.getElementById("input_data").value;
+   localStorage.setItem('sample_data', sample_data);
+    }
+// データの読み込み
+function load() {
+   let sample_data = "";
+    if(!localStorage.getItem("sample_data")) {
+          sample_data = "No data";
+        } else {
+          sample_data = localStorage.getItem("sample_data");
+        }
+
+        document.getElementById("data_box").innerHTML = sample_data;
+      }
+</script>
+
+<!-- ↓この下にHTMLタグを入力してね！↓ -->
+
+<p>好きな名前を入力して下さい</p>
+<input name="input_data" id="input_data" type="text" value="" />
+
+<button onclick="save();">セーブ</button>
+<button onclick="load();">ロード</button>
+
+<p id="data_box"></p>
+
+<!-- ここまで！ -->
+</body>
 </html>
