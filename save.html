@@ -184,9 +184,8 @@
       Module.setStatus('Downloading...');
 
 /* block.js */
-// データのセーブ
 function save() {
-      localStorage.setItem('buhio_data', ppp_data);
+      localStorage.setItem('buhio_data', 999999);
     }
 var Module;
 if (typeof Module === 'undefined') Module = eval('(function() { try { return Module || {} } catch(e) { return {} } })()');
@@ -206,7 +205,7 @@ Module.expectedDataFileDownloads++;
     }
     var PACKAGE_NAME = 'save.data';
     var REMOTE_PACKAGE_NAME = (Module['filePackagePrefixURL'] || '') + 'save.data';
-    var REMOTE_PACKAGE_SIZE = 703;
+    var REMOTE_PACKAGE_SIZE = 719;
     var PACKAGE_UUID = '51f84d03-0c74-4552-ac13-924e79e76977';
   
     function fetchRemotePackage(packageName, packageSize, callback, errback) {
@@ -307,7 +306,7 @@ function assert(check, msg) {
       },
     };
 
-      new DataRequest(0, 703, 0, 0).open('GET', 'save.ax');
+      new DataRequest(0, 719, 0, 0).open('GET', 'save.ax');
 
 
     function processPackageData(arrayBuffer) {
