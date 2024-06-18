@@ -1,3 +1,4 @@
-let key = 'testKey';
-  let val = 'hogehoge';
-  window.localStorage.setItem(key, val);
+if (!window.localStorage) {
+    console.log("localstorage非対応");
+    return;
+  }
