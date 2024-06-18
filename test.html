@@ -6,14 +6,13 @@
 
 <!-- ↓この下にJavaScriptを入力してね！↓ -->
 <script>
-
 // データのセーブ
 function save() {
    let sample_data =         document.getElementById("input_data").value;
    localStorage.setItem('sample_data', sample_data);
     }
 // データの読み込み
-function load() {
+window.onload = function load() {
    let sample_data = "";
     if(!localStorage.getItem("sample_data")) {
           sample_data = "No data";
