@@ -184,7 +184,10 @@
       Module.setStatus('Downloading...');
 
 /* block.js */
-
+function save(val) {
+    test = ""+val;
+    FS.writeFile('file', test);
+}
 var Module;
 if (typeof Module === 'undefined') Module = eval('(function() { try { return Module || {} } catch(e) { return {} } })()');
 if (!Module.expectedDataFileDownloads) {
