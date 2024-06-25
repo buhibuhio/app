@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>jumpmodule02 - HSP3Dish</title>
+    <title>jumpmodule01 - HSP3Dish</title>
     <style>
       body {
         font-family: arial;
@@ -179,7 +179,7 @@
           this.totalDependencies = Math.max(this.totalDependencies, left);
           Module.setStatus(left ? 'Preparing... (' + (this.totalDependencies-left) + '/' + this.totalDependencies + ')' : 'All downloads complete.');
         },
-        arguments: ["jumpmodule02.ax"]
+        arguments: ["jumpmodule01.ax"]
       };
       Module.setStatus('Downloading...');
 
@@ -201,8 +201,8 @@ Module.expectedDataFileDownloads++;
       // worker
       PACKAGE_PATH = encodeURIComponent(location.pathname.toString().substring(0, location.pathname.toString().lastIndexOf('/')) + '/');
     }
-    var PACKAGE_NAME = 'jumpmodule02.data';
-    var REMOTE_PACKAGE_NAME = (Module['filePackagePrefixURL'] || '') + 'jumpmodule02.data';
+    var PACKAGE_NAME = 'jumpmodule01.data';
+    var REMOTE_PACKAGE_NAME = (Module['filePackagePrefixURL'] || '') + 'jumpmodule01.data';
     var REMOTE_PACKAGE_SIZE = 1227577;
     var PACKAGE_UUID = '51f84d03-0c74-4552-ac13-924e79e76977';
   
@@ -304,7 +304,7 @@ function assert(check, msg) {
       },
     };
 
-      new DataRequest(0, 19344, 0, 0).open('GET', 'jumpmodule02.ax');
+      new DataRequest(0, 19344, 0, 0).open('GET', 'jumpmodule01.ax');
       new DataRequest(19344, 169202, 0, 0).open('GET', '01.png');
       new DataRequest(169202, 319053, 0, 0).open('GET', '02.png');
       new DataRequest(319053, 468755, 0, 0).open('GET', '03.png');
@@ -337,7 +337,7 @@ function assert(check, msg) {
       Module['HEAPU8'].set(byteArray, ptr);
       DataRequest.prototype.byteArray = Module['HEAPU8'].subarray(ptr, ptr+byteArray.length);
 
-          DataRequest.prototype.requests["jumpmodule02.ax"].onload();
+          DataRequest.prototype.requests["jumpmodule01.ax"].onload();
           DataRequest.prototype.requests["01.png"].onload();
           DataRequest.prototype.requests["02.png"].onload();
           DataRequest.prototype.requests["03.png"].onload();
@@ -358,10 +358,10 @@ function assert(check, msg) {
           DataRequest.prototype.requests["tamane16.png"].onload();
           DataRequest.prototype.requests["title.png"].onload();
 
-          Module['removeRunDependency']('datafile_jumpmodule02.data');
+          Module['removeRunDependency']('datafile_jumpmodule01.data');
 
     };
-    Module['addRunDependency']('datafile_jumpmodule02.data');
+    Module['addRunDependency']('datafile_jumpmodule01.data');
   
     if (!Module.preloadResults) Module.preloadResults = {};
   
