@@ -203,7 +203,7 @@ Module.expectedDataFileDownloads++;
     }
     var PACKAGE_NAME = 'jumpmodule01.data';
     var REMOTE_PACKAGE_NAME = (Module['filePackagePrefixURL'] || '') + 'jumpmodule01.data';
-    var REMOTE_PACKAGE_SIZE = 838477;
+    var REMOTE_PACKAGE_SIZE = 803068;
     var PACKAGE_UUID = '51f84d03-0c74-4552-ac13-924e79e76977';
   
     function fetchRemotePackage(packageName, packageSize, callback, errback) {
@@ -304,28 +304,26 @@ function assert(check, msg) {
       },
     };
 
-      new DataRequest(0, 36001, 0, 0).open('GET', 'jumpmodule01.ax');
-      new DataRequest(36001, 185859, 0, 0).open('GET', '01.png');
-      new DataRequest(185859, 335710, 0, 0).open('GET', '02.png');
-      new DataRequest(335710, 485412, 0, 0).open('GET', '03.png');
-      new DataRequest(485412, 635147, 0, 0).open('GET', '04.png');
-      new DataRequest(635147, 637990, 0, 0).open('GET', 'buhio.png');
-      new DataRequest(637990, 643756, 0, 0).open('GET', 'chara.png');
-      new DataRequest(643756, 651880, 0, 0).open('GET', 'enemy.png');
-      new DataRequest(651880, 678375, 0, 0).open('GET', 'mondot.png');
-      new DataRequest(678375, 692469, 0, 0).open('GET', 'se02.wav');
-      new DataRequest(692469, 704083, 0, 0).open('GET', 'se08.wav');
-      new DataRequest(704083, 717121, 0, 0).open('GET', 'se09.wav');
-      new DataRequest(717121, 741455, 0, 0).open('GET', 'se11.wav');
-      new DataRequest(741455, 746657, 0, 0).open('GET', 'se_brake.wav');
-      new DataRequest(746657, 750493, 0, 0).open('GET', 'se_break.wav');
-      new DataRequest(750493, 754329, 0, 0).open('GET', 'se_break2.wav');
-      new DataRequest(754329, 765975, 0, 0).open('GET', 'se_click.wav');
-      new DataRequest(765975, 789333, 0, 0).open('GET', 'se_coin.wav');
-      new DataRequest(789333, 809391, 0, 0).open('GET', 'se_fireball2.wav');
-      new DataRequest(809391, 814043, 0, 0).open('GET', 'se_foot.wav');
-      new DataRequest(814043, 816253, 0, 0).open('GET', 'se_puyo.wav');
-      new DataRequest(816253, 838477, 0, 0).open('GET', 'title.png');
+      new DataRequest(0, 36016, 0, 0).open('GET', 'jumpmodule01.ax');
+      new DataRequest(36016, 185874, 0, 0).open('GET', '01.png');
+      new DataRequest(185874, 335725, 0, 0).open('GET', '02.png');
+      new DataRequest(335725, 485427, 0, 0).open('GET', '03.png');
+      new DataRequest(485427, 635162, 0, 0).open('GET', '04.png');
+      new DataRequest(635162, 638005, 0, 0).open('GET', 'buhio.png');
+      new DataRequest(638005, 643771, 0, 0).open('GET', 'chara.png');
+      new DataRequest(643771, 651895, 0, 0).open('GET', 'enemy.png');
+      new DataRequest(651895, 652004, 0, 0).open('GET', 'note.txt');
+      new DataRequest(652004, 666098, 0, 0).open('GET', 'se01.wav');
+      new DataRequest(666098, 677744, 0, 0).open('GET', 'se02.wav');
+      new DataRequest(677744, 690782, 0, 0).open('GET', 'se03.wav');
+      new DataRequest(690782, 702396, 0, 0).open('GET', 'se04.wav');
+      new DataRequest(702396, 707048, 0, 0).open('GET', 'se05.wav');
+      new DataRequest(707048, 710884, 0, 0).open('GET', 'se06.wav');
+      new DataRequest(710884, 735218, 0, 0).open('GET', 'se07.wav');
+      new DataRequest(735218, 737428, 0, 0).open('GET', 'se08.wav');
+      new DataRequest(737428, 760786, 0, 0).open('GET', 'se09.wav');
+      new DataRequest(760786, 780844, 0, 0).open('GET', 'se10.wav');
+      new DataRequest(780844, 803068, 0, 0).open('GET', 'title.png');
 
 
     function processPackageData(arrayBuffer) {
@@ -347,19 +345,17 @@ function assert(check, msg) {
           DataRequest.prototype.requests["buhio.png"].onload();
           DataRequest.prototype.requests["chara.png"].onload();
           DataRequest.prototype.requests["enemy.png"].onload();
-          DataRequest.prototype.requests["mondot.png"].onload();
+          DataRequest.prototype.requests["note.txt"].onload();
+          DataRequest.prototype.requests["se01.wav"].onload();
           DataRequest.prototype.requests["se02.wav"].onload();
+          DataRequest.prototype.requests["se03.wav"].onload();
+          DataRequest.prototype.requests["se04.wav"].onload();
+          DataRequest.prototype.requests["se05.wav"].onload();
+          DataRequest.prototype.requests["se06.wav"].onload();
+          DataRequest.prototype.requests["se07.wav"].onload();
           DataRequest.prototype.requests["se08.wav"].onload();
           DataRequest.prototype.requests["se09.wav"].onload();
-          DataRequest.prototype.requests["se11.wav"].onload();
-          DataRequest.prototype.requests["se_brake.wav"].onload();
-          DataRequest.prototype.requests["se_break.wav"].onload();
-          DataRequest.prototype.requests["se_break2.wav"].onload();
-          DataRequest.prototype.requests["se_click.wav"].onload();
-          DataRequest.prototype.requests["se_coin.wav"].onload();
-          DataRequest.prototype.requests["se_fireball2.wav"].onload();
-          DataRequest.prototype.requests["se_foot.wav"].onload();
-          DataRequest.prototype.requests["se_puyo.wav"].onload();
+          DataRequest.prototype.requests["se10.wav"].onload();
           DataRequest.prototype.requests["title.png"].onload();
 
           Module['removeRunDependency']('datafile_jumpmodule01.data');
