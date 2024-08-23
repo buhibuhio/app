@@ -203,7 +203,7 @@ Module.expectedDataFileDownloads++;
     }
     var PACKAGE_NAME = 'jumpmodule02.data';
     var REMOTE_PACKAGE_NAME = (Module['filePackagePrefixURL'] || '') + 'jumpmodule02.data';
-    var REMOTE_PACKAGE_SIZE = 803068;
+    var REMOTE_PACKAGE_SIZE = 814428;
     var PACKAGE_UUID = '51f84d03-0c74-4552-ac13-924e79e76977';
   
     function fetchRemotePackage(packageName, packageSize, callback, errback) {
@@ -304,26 +304,27 @@ function assert(check, msg) {
       },
     };
 
-      new DataRequest(0, 36016, 0, 0).open('GET', 'jumpmodule02.ax');
-      new DataRequest(36016, 185874, 0, 0).open('GET', '01.png');
-      new DataRequest(185874, 335725, 0, 0).open('GET', '02.png');
-      new DataRequest(335725, 485427, 0, 0).open('GET', '03.png');
-      new DataRequest(485427, 635162, 0, 0).open('GET', '04.png');
-      new DataRequest(635162, 638005, 0, 0).open('GET', 'buhio.png');
-      new DataRequest(638005, 643771, 0, 0).open('GET', 'chara.png');
-      new DataRequest(643771, 651895, 0, 0).open('GET', 'enemy.png');
-      new DataRequest(651895, 652004, 0, 0).open('GET', 'note.txt');
-      new DataRequest(652004, 666098, 0, 0).open('GET', 'se01.wav');
-      new DataRequest(666098, 677744, 0, 0).open('GET', 'se02.wav');
-      new DataRequest(677744, 690782, 0, 0).open('GET', 'se03.wav');
-      new DataRequest(690782, 702396, 0, 0).open('GET', 'se04.wav');
-      new DataRequest(702396, 707048, 0, 0).open('GET', 'se05.wav');
-      new DataRequest(707048, 710884, 0, 0).open('GET', 'se06.wav');
-      new DataRequest(710884, 735218, 0, 0).open('GET', 'se07.wav');
-      new DataRequest(735218, 737428, 0, 0).open('GET', 'se08.wav');
-      new DataRequest(737428, 760786, 0, 0).open('GET', 'se09.wav');
-      new DataRequest(760786, 780844, 0, 0).open('GET', 'se10.wav');
-      new DataRequest(780844, 803068, 0, 0).open('GET', 'title.png');
+      new DataRequest(0, 36047, 0, 0).open('GET', 'jumpmodule02.ax');
+      new DataRequest(36047, 185905, 0, 0).open('GET', '01.png');
+      new DataRequest(185905, 335756, 0, 0).open('GET', '02.png');
+      new DataRequest(335756, 485458, 0, 0).open('GET', '03.png');
+      new DataRequest(485458, 635193, 0, 0).open('GET', '04.png');
+      new DataRequest(635193, 638036, 0, 0).open('GET', 'buhio.png');
+      new DataRequest(638036, 643802, 0, 0).open('GET', 'chara.png');
+      new DataRequest(643802, 651926, 0, 0).open('GET', 'enemy.png');
+      new DataRequest(651926, 652035, 0, 0).open('GET', 'note.txt');
+      new DataRequest(652035, 666129, 0, 0).open('GET', 'se01.wav');
+      new DataRequest(666129, 677775, 0, 0).open('GET', 'se02.wav');
+      new DataRequest(677775, 690813, 0, 0).open('GET', 'se03.wav');
+      new DataRequest(690813, 702427, 0, 0).open('GET', 'se04.wav');
+      new DataRequest(702427, 707079, 0, 0).open('GET', 'se05.wav');
+      new DataRequest(707079, 710915, 0, 0).open('GET', 'se06.wav');
+      new DataRequest(710915, 735249, 0, 0).open('GET', 'se07.wav');
+      new DataRequest(735249, 737459, 0, 0).open('GET', 'se08.wav');
+      new DataRequest(737459, 760817, 0, 0).open('GET', 'se09.wav');
+      new DataRequest(760817, 780875, 0, 0).open('GET', 'se10.wav');
+      new DataRequest(780875, 803099, 0, 0).open('GET', 'title.png');
+      new DataRequest(803099, 814428, 0, 0).open('GET', 'title2.png');
 
 
     function processPackageData(arrayBuffer) {
@@ -357,6 +358,7 @@ function assert(check, msg) {
           DataRequest.prototype.requests["se09.wav"].onload();
           DataRequest.prototype.requests["se10.wav"].onload();
           DataRequest.prototype.requests["title.png"].onload();
+          DataRequest.prototype.requests["title2.png"].onload();
 
           Module['removeRunDependency']('datafile_jumpmodule02.data');
 
@@ -433,7 +435,7 @@ function assert(check, msg) {
 
 
     </script>
-    <script async type="text/javascript" src="hsp3dish.js"></script>
-  <p><font size="2" color="#404040">powered by <a href="https://hsp.tv/make/hsp3dish.html" target="_blank">hsp3dish.js</a> / OpenHSP</font></p>
+    <script async type="text/javascript" src="hsp3dishw.js"></script>
+  <p><font size="2" color="#404040">powered by <a href="https://hsp.tv/make/hsp3dish.html" target="_blank">hsp3dishw.js</a> / OpenHSP</font></p>
   </body>
 </html>
